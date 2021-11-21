@@ -1,24 +1,64 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import {beforeEach, afterEach} from "@/router/permission";
+import Layout from '../layout'
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Dashboard',
+      }
+    ]
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: '/login',
+    name: "Login",
+    component: () => import('../views/keyauth/login/new'),
   },
+  {
+    path: '/cmdb',
+    component: Layout,
+    redirect: '/cmdb/host',
+    children: [
+      {
+        path: 'host',
+        component: () => import('@/views/cmdb/host/index'),
+        name: 'CmdbHost',
+      }
+    ]
+  },
+  {
+    path: '/cmdb',
+    component: Layout,
+    redirect: '/cmdb/search',
+    children: [
+      {
+        path: 'search',
+        component: () => import('@/views/cmdb/search/index'),
+        name: 'ResourceSearch',
+      },
+      {
+        path: 'host',
+        component: () => import('@/views/cmdb/host/index'),
+        name: 'ResourceHost',
+      }
+    ]
+  },
+  {
+    path: '/404',
+    component: () => import('@/views/common/error-page/404'),
+    hidden: true
+  },
+  // 如果前面所有路径都没有匹配到页面 就跳转到404页面
+  { path: '*', redirect: '/404', hidden: true }
 ];
 
 const router = new VueRouter({
@@ -26,5 +66,6 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
-
+router.beforeEach(beforeEach)
+router.afterEach(afterEach)
 export default router;
