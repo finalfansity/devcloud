@@ -3,7 +3,7 @@
     <!-- logo -->
     <div class="logo-container">
       <hamburger :is-active="isActive" @toggleClick="toggleClick"> </hamburger>
-      <span class="title">管控平台</span>
+      <span class="title">测试平台</span>
     </div>
     <!-- 主导航栏 -->
     <div class="navbar-main">
@@ -11,7 +11,7 @@
         class="navbar-item"
         @click="changeSystem('dashboard')"
         :class="{ active: activeSystem === 'dashboard' }"
-        >首页</span
+        >首页展示</span
       >
       <span
         class="navbar-item"
@@ -58,7 +58,11 @@
           </el-dropdown-item>
           <!-- 退出系统 -->
           <el-dropdown-item @click.native="logout" divided>
+            <svg-icon icon-class="logout" />
+            <!--  占位方式避免上下对齐问题
             <span style="display: block">退出登录</span>
+            -->
+            <span class="dropdown-item-text">退出登录</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -111,7 +115,7 @@ export default {
 .navbar-main {
   display: flex;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .navbar-item {
@@ -146,5 +150,9 @@ export default {
 
 .navbar-user {
   margin-left: auto;
+}
+
+.dropdown-item-text {
+  margin-left: 12px;
 }
 </style>

@@ -4,12 +4,8 @@
   </div>
 </template>
 
-
 <script>
 export default {
-  name: 'App'
-}
+  name: "App",
+};
 </script>
-
-
-

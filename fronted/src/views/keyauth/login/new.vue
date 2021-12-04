@@ -102,7 +102,7 @@ export default {
       }
       function blurFunction() {
         let parentNode = this.parentNode.parentNode;
-        if (this.value == "") {
+        if (this.value === "") {
           parentNode.classList.remove("focus");
         }
       }
