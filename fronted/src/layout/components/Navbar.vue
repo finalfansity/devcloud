@@ -7,11 +7,36 @@
     </div>
     <!-- 主导航栏 -->
     <div class="navbar-main">
-      <span class="navbar-item" @click="changeSystem('dashboard')" :class="{ active: activeSystem === 'dashboard' }">首页</span>
-      <span class="navbar-item" @click="changeSystem('product')" :class="{ active: activeSystem === 'product' }">产品运营</span>
-      <span class="navbar-item" @click="changeSystem('cmdb')" :class="{ active: activeSystem === 'cmdb' }">资源管理</span>
-      <span class="navbar-item" @click="changeSystem('workflow')" :class="{ active: activeSystem === 'workflow' }">研发交付</span>
-      <span class="navbar-item" @click="changeSystem('monitor')" :class="{ active: activeSystem === 'monitor' }">监控告警</span>
+      <span
+        class="navbar-item"
+        @click="changeSystem('dashboard')"
+        :class="{ active: activeSystem === 'dashboard' }"
+        >首页</span
+      >
+      <span
+        class="navbar-item"
+        @click="changeSystem('product')"
+        :class="{ active: activeSystem === 'product' }"
+        >产品运营</span
+      >
+      <span
+        class="navbar-item"
+        @click="changeSystem('cmdb')"
+        :class="{ active: activeSystem === 'cmdb' }"
+        >资源管理</span
+      >
+      <span
+        class="navbar-item"
+        @click="changeSystem('workflow')"
+        :class="{ active: activeSystem === 'workflow' }"
+        >研发交付</span
+      >
+      <span
+        class="navbar-item"
+        @click="changeSystem('monitor')"
+        :class="{ active: activeSystem === 'monitor' }"
+        >监控告警</span
+      >
     </div>
     <!-- 用户信息区 -->
     <div class="navbar-user">
@@ -33,7 +58,7 @@
           </el-dropdown-item>
           <!-- 退出系统 -->
           <el-dropdown-item @click.native="logout" divided>
-            <span style="display:block;">退出登录</span>
+            <span style="display: block">退出登录</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -42,38 +67,35 @@
 </template>
 
 <script>
-import Hamburger from '@/components/Hamburger'
+import Hamburger from "@/components/Hamburger";
 
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   components: { Hamburger },
   data() {
-    return {
-
-    }
+    return {};
   },
-  computed:{
+  computed: {
     activeSystem() {
-      return this.$store.getters.system
+      return this.$store.getters.system;
     },
-    isActive(){
-      return this.$store.getters.sidebar.opened
-    }
-
+    isActive() {
+      return this.$store.getters.sidebar.opened;
+    },
   },
   methods: {
     changeSystem(system) {
-      this.$store.dispatch('app/setSystem', system)
+      this.$store.dispatch("app/setSystem", system);
     },
     toggleClick() {
-      this.$store.dispatch('app/toggleSideBar')
+      this.$store.dispatch("app/toggleSideBar");
     },
     async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push({path: '/login'})
-    }
-  }
-}
+      await this.$store.dispatch("user/logout");
+      this.$router.push({ path: "/login" });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -90,6 +112,8 @@ export default {
   display: flex;
   color: rgba(255, 255, 255, 0.8);
   font-size: 12px;
+}
+
 .navbar-item {
   width: 68px;
   display: flex;
@@ -109,18 +133,15 @@ export default {
   border-radius: 4px;
 }
 
-}
-
 .logo-container {
   display: flex;
   align-items: center;
   box-sizing: border-box;
   width: 200px;
   color: rgba(255, 255, 255, 0.8);
-
+}
 .title {
   font-size: 16px;
-}
 }
 
 .navbar-user {

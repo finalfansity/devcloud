@@ -7,22 +7,21 @@ import store from "./store";
 import "./icons";
 
 //加载element ui
-import Element from 'element-ui'
-import "./styles/element-variables.scss"
+import Element from "element-ui";
+import "./styles/element-variables.scss";
 
 //加载全局样式
-import "./styles/index.scss"
+import "./styles/index.scss";
 // 加载全局指令
-import '@/directives'
+import "@/directives";
 
 // 加载全局过滤器
-import '@/filters'
-
+import "@/filters";
 
 Vue.config.productionTip = false;
 Vue.use(Element, {
-  size: "mini"
-})
+  size: "mini",
+});
 new Vue({
   router,
   store,

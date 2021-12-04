@@ -48,5 +48,6 @@ export default {
 <style lang="scss" scoped>
 .sidebar-el-menu {
   height: calc(100vh - 50px);
+
 }
 </style>

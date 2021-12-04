@@ -1,18 +1,14 @@
 <template>
-  <div class="main-container">
-    Host页面
-  </div>
+  <div class="main-container">Host页面</div>
 </template>
 
 <script>
 export default {
-    name: 'Host',
-    data() {
-      return {}
-    }
-}
+  name: "Host",
+  data() {
+    return {};
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
