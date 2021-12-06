@@ -1,13 +1,16 @@
 <template>
-  <div class="main-container">
+  <div class="host-container">
     <tips :tips="tips" />
-    <div>
-      <el-table :data="tableData" style="width: 100%" stripe="true">
-        <el-table-column prop="date" label="日期" width="180">
+    <div class="box-shadow">
+      <el-table :data="hosts" style="width: 100%">
+        <el-table-column prop="name" label="名称" width="180">
         </el-table-column>
-        <el-table-column prop="name" label="姓名" width="180">
+        <el-table-column prop="sync_at" label="同步时间" width="180">
+          <template slot-scope="scope">
+            {{ scope.row.sync_at | parseTime }}
+          </template>
         </el-table-column>
-        <el-table-column prop="address" label="地址"> </el-table-column>
+        <el-table-column prop="description" label="描述"> </el-table-column>
       </el-table>
     </div>
   </div>
@@ -49,4 +52,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.box-shadow {
+  margin: 12px 0;
+}
+</style>
